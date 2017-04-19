@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Entities>
+	<ExtensionPackages>
+		<ExtensionPackage name="HTML5Video"
+						  description="ThingWorx Video Widget"
+						  vendor="PTC Romania"
+						  packageVersion="1.0" 
+						  minimumThingWorxVersion="4.0.0" />
+	</ExtensionPackages>
+	<Widgets>
+		<Widget name="HTML5Video">
+			<UIResources>
+				<!-- Studio ONLY -->
+				<FileResource type="CSS" file="HTML5Video.ide.css" description="" isDevelopment="true" isRuntime="false" />
+				<FileResource type="JS" file="HTML5Video.ide.js" description="" isDevelopment="true" isRuntime="false" />
+				<!-- Runtime/Squeal ONLY -->
+				<FileResource type="CSS" file="HTML5Video.runtime.css" description="" isDevelopment="false" isRuntime="true" />
+				<FileResource type="JS" file="HTML5Video.runtime.js" description="" isDevelopment="false" isRuntime="true" />
+			</UIResources>
+		</Widget>
+	</Widgets>
+</Entities>

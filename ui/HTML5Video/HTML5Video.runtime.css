@@ -1,0 +1,18 @@
+.widget-HTML5Video .widget-HTML5Video-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+}
+.widget-HTML5Video HTML5Video {
+    background: none;
+    box-sizing: border-box;
+    border: none;
+  /*  height: auto;
+    padding: 4px;
+    width: 100%;
+    display: block;
+    resize: none;*/
+    position: relative;
+}
