@@ -33,6 +33,29 @@ TW.IDE.Widgets.HTML5Video = function () {
 					'baseType': 'BOOLEAN',
 					'isVisible': true,
 					'defaultValue': true,
+				},
+				'MediaTime': {
+					'baseType': "INTEGER",
+					'isVisible': true,
+					'defaultValue': 0,
+					'isBindingTarget': true,
+					'isBindingSource': true,
+					'description': "The current playback time in seconds. Setting this property seeks the media to the new time."
+				},
+				'PreloadOption': {
+					'baseType': 'STRING',
+					'isVisible': true,
+					'defaultValue': 'auto',
+					'selectOptions': [{
+						value: 'auto',
+						text: 'Auto'
+					}, {
+						value: 'metadata',
+						text: 'Metadata'
+					}, {
+						value: 'none',
+						text: 'None'
+					}]
 				}
 			}
 		};
