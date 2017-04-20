@@ -34,6 +34,18 @@ TW.IDE.Widgets.HTML5Video = function () {
 					'isVisible': true,
 					'defaultValue': true,
 				},
+				'AutoLoop': {
+					'baseType': 'BOOLEAN',
+					'isVisible': true,
+					'defaultValue': false	
+				},
+				'Volume': {
+					'baseType': 'NUMBER',
+					'isVisible': true,
+					'defaultValue': 1,
+					'isBindingTarget': true,
+					'description': 'Is a double indicating the audio volume, from 0.0 (silent) to 1.0 (loudest)'
+				},
 				'MediaTime': {
 					'baseType': "INTEGER",
 					'isVisible': true,
@@ -60,10 +72,12 @@ TW.IDE.Widgets.HTML5Video = function () {
 			}
 		};
 	};
-	this.widgetServices = function () {
-		return {
-		};
-	};
+	 this.widgetServices = function () {
+        return {
+            'Play': { 'warnIfNotBound': false },
+            'Pause': { 'warnIfNotBound': false }
+        };
+    };
 	this.renderHtml = function () {
 
 		var html = '';

@@ -1,8 +1,4 @@
 TW.Runtime.Widgets.HTML5Video = function () {
-	var valueElem;
-	var htmlToWrite = '';
-
-
 	this.runtimeProperties = function () {
 		return {
 			'supportsAutoResize': true
@@ -12,21 +8,29 @@ TW.Runtime.Widgets.HTML5Video = function () {
 	this.renderHtml = function () {
 		var html = '<div class="widget-content widget-HTML5Video">' +
 			'<div class="widget-HTML5Video-container ">' +
-			'<video preload="' + this.getProperty("PreloadOption") + '"' + this.GetAutoPlay() + ' ' + this.GetShowControls() + ' ' + this.GetFitMethod() + ' >' +
+			'<video preload="' + this.getProperty("PreloadOption") + '"' + this.GetAutoPlay() + ' ' + this.GetShowControls() + ' ' + this.GetFitMethod() + ' ' + this.GetAutoLoop() + '>' +
 			'<source src=" ' + this.getProperty('VideoLocation') + "#t=" + this.getProperty('MediaTime') + '" type="video/mp4">' +
 			'Your browser does not support the video tag.' +
 			'</video> ' +
 			'</div></div>';
 		return html;
 	};
+
 	this.GetAutoPlay = function () {
-		if (this.getProperty('AutoPlay') == true)
+		if (this.getProperty('AutoPlay'))
 			return "autoplay";
 		else return "";
 	};
 
+	this.GetAutoLoop = function () {
+		if (this.getProperty('AutoLoop')) {
+			return "loop";
+		}
+		else return "";
+	}
+
 	this.GetShowControls = function () {
-		if (this.getProperty('ShowControls') == true)
+		if (this.getProperty('ShowControls'))
 			return "controls";
 		else return "";
 	}
@@ -70,6 +74,21 @@ TW.Runtime.Widgets.HTML5Video = function () {
 		} else if (updatePropertyInfo.TargetProperty === 'MediaTime') {
 			videoPlayer[0].currentTime = parseFloat(updatePropertyInfo.SinglePropertyValue);
 			this.setProperty('MediaTime', updatePropertyInfo.SinglePropertyValue);
+		} else if (updatePropertyInfo.TargetProperty === 'Volume') {
+			videoPlayer[0].volume = parseFloat(updatePropertyInfo.SinglePropertyValue);
+			this.setProperty('Volume', updatePropertyInfo.SinglePropertyValue);
 		}
 	};
+
+	this.serviceInvoked = function (serviceName) {
+		var videoPlayer = this.jqElement.find("video")[0];
+		switch (serviceName) {
+			case 'Play':
+				videoPlayer.play();
+				break;
+			case 'Pause':
+				videoPlayer.pause();
+				break;
+		}
+	}
 };
