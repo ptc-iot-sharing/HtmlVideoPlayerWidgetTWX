@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><Entities>
   <ExtensionPackages>
-    <ExtensionPackage name="HTML5Video" description="ThingWorx Video Widget" vendor="PTC Romania" packageVersion="1.1.6" minimumThingWorxVersion="4.0.0"/>
+    <ExtensionPackage name="HTML5Video" description="ThingWorx Video Widget" vendor="PTC Romania" packageVersion="1.1.7" minimumThingWorxVersion="4.0.0"/>
   </ExtensionPackages>
   <Widgets>
     <Widget name="HTML5Video">

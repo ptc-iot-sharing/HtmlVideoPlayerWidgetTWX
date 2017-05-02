@@ -65,16 +65,18 @@ TW.Runtime.Widgets.HTML5Video = function () {
 		var videoPlayer = this.jqElement.find("video");
 		// TargetProperty tells you which of your bound properties changed
 		if (updatePropertyInfo.TargetProperty === 'VideoLocation') {
+			// test if the property actually changed
+			if (updatePropertyInfo.SinglePropertyValue != this.getProperty('VideoLocation')) {
+				var srcVideo = updatePropertyInfo.SinglePropertyValue;
 
-			var srcVideo = updatePropertyInfo.SinglePropertyValue;
+				this.setProperty('VideoLocation', srcVideo);
 
-			this.setProperty('VideoLocation', srcVideo);
+				widgetElement.attr("src", srcVideo);
 
-			widgetElement.attr("src", srcVideo);
-
-			videoPlayer.trigger('load');
-			if (this.getProperty('AutoPlay') == true)
-				videoPlayer.trigger('play');
+				videoPlayer.trigger('load');
+				if (this.getProperty('AutoPlay') == true)
+					videoPlayer.trigger('play');
+			}
 		} else if (updatePropertyInfo.TargetProperty === 'MediaTime') {
 			videoPlayer[0].currentTime = parseFloat(updatePropertyInfo.SinglePropertyValue);
 			this.setProperty('MediaTime', updatePropertyInfo.SinglePropertyValue);
