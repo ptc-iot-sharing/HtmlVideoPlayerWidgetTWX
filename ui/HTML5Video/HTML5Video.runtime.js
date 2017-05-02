@@ -49,11 +49,15 @@ TW.Runtime.Widgets.HTML5Video = function () {
 
 	this.afterRender = function () {
 		var thisWidget = this;
-		this.jqElement.find('video').on(
+		var video = this.jqElement.find('video');
+		video.on(
 			"timeupdate",
 			function (event) {
 				thisWidget.setProperty("MediaTime", this.currentTime);
 			});
+		video[0].volume = this.getProperty("Volume");
+		video[0].playbackRate = this.getProperty("PlaybackRate");
+
 	};
 
 	this.updateProperty = function (updatePropertyInfo) {
@@ -77,6 +81,9 @@ TW.Runtime.Widgets.HTML5Video = function () {
 		} else if (updatePropertyInfo.TargetProperty === 'Volume') {
 			videoPlayer[0].volume = parseFloat(updatePropertyInfo.SinglePropertyValue);
 			this.setProperty('Volume', updatePropertyInfo.SinglePropertyValue);
+		} else if (updatePropertyInfo.TargetProperty === 'PlaybackRate') {
+			videoPlayer[0].playbackRate = parseFloat(updatePropertyInfo.SinglePropertyValue);
+			this.setProperty('PlaybackRate', updatePropertyInfo.SinglePropertyValue);
 		}
 	};
 

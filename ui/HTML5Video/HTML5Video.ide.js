@@ -46,6 +46,13 @@ TW.IDE.Widgets.HTML5Video = function () {
 					'isBindingTarget': true,
 					'description': 'Is a double indicating the audio volume, from 0.0 (silent) to 1.0 (loudest)'
 				},
+				'PlaybackRate': {
+					'baseType': 'NUMBER',
+					'isVisible': true,
+					'defaultValue': 1,
+					'isBindingTarget': true,
+					'description': 'Is a double indicating the playback speed, where 0.5 is half speed, 1.0 is normal and 2.0 is double'
+				},
 				'MediaTime': {
 					'baseType': "INTEGER",
 					'isVisible': true,
